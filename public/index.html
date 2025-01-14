@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.full.min.js"></script>
+    <title>File Upload and Download</title>
+    <style>
+        body {
+            background-color: #131e2a; /* Light blue background */
+            font-family: Arial, sans-serif;
+        }
+        h1, h2 {
+            color: #ab7d40; /* Very dark blue */
+            text-align: center;
+        }
+        h3 {
+            color: #ab7d40;
+            text-align: center;
+            display: none; /* Hide by default */
+        }
+        /* #hidePreviewButton {
+             margin-top: 10px;
+             background-color: #fff;
+             color: white;
+             border: none;
+             padding: 5px 10px;
+             cursor: pointer;
+        }
+
+        #hidePreviewButton:hover {
+            background-color: #0056b3;
+        } */
+
+        form {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #2b3540; /* Very dark blue */
+            background-color: #2b3540;
+        }
+        input[type="file"], input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            border: 1px solid #555;
+            border-radius: 5px;
+            color: #fff;
+            background-color: #6666;
+        }
+        button {
+            background-color: #9e7138; /* Very dark blue */
+            color: white;
+            padding: 10px 20px;
+            border: 1px solid white;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+      background: linear-gradient(to right,#654838, #1e2574, #4e3d4c); /* Lighter blue on hover */
+      font-weight: bold;
+    }
+
+        button[disabled] {
+            background-color: grey;
+            cursor: not-allowed;
+        }
+   
+        table {
+            width: 100%;
+            margin: 10px 0;
+            border-collapse: collapse;
+            /* border: 1px solid #f2f2f2; */
+            overflow-x: auto; /* Allow horizontal scrolling */
+            display: block; /* Make the table scrollable */
+            max-height: 300px; /* Limit the height */
+            overflow-y: auto; /* Add vertical scrolling */
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #f2f2f2;
+            text-align: left;
+            word-wrap: break-word; /* Allow text wrapping */
+            color: white;
+        }
+        th {
+            background-color: #f2f2f2; /* Light gray background for headers */
+            position: sticky;
+            top: 0; /* Sticky header for easier navigation */
+            z-index: 10; /* Ensure header stays on top */
+        }
+        #uploadStatus {
+            text-align: center;
+            margin-top: 20px;
+            color: #9e7138; /* Very dark blue */
+        }
+    </style>
+</head>
+<body>
+    <h1>File Upload and Download</h1>
+
+    <!-- Upload Section -->
+    <h2>Upload File</h2>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" id="fileInput" name="file" required />
+        <button type="button" id="validateButton">Validate</button>
+        <button type="submit" id="uploadButton" disabled>Upload</button>
+    </form>
+    <div id="uploadStatus"></div>
+
+    <!-- Excel File Preview -->
+    <!-- <h3 id="previewHeader">Preview Excel File</h3> -->
+    <div id="filePreviewContainer">
+        <div id="filePreview"></div>
+        <button id="hidePreviewButton" style="display:none;">Hide Preview</button>
+        <table id="filePreview"></table>
+    </div>
+
+    <!-- <div id="filePreviewContainer" style="display:none;">
+        <div id="filePreview"></div>
+        <button id="hidePreviewButton">
+            <i class="fas fa-eye-slash"></i> Hide Preview
+        </button>
+        <table id="filePreview"></table>
+    </div> -->
+
+    
+    
+    <!-- <table id="filePreview"></table> -->
+
+    <!-- Download Section -->
+    <h2>Download File</h2>
+    <form id="downloadForm">
+        <!-- <label for="fileId">Enter File ID to Download:</label> -->
+        <input type="text" id="fileId" name="fileId" placeholder="Enter File ID to Download" />
+        <input type="text" id="fileName" name="fileName" placeholder="Enter Filename to Download" /> <!-- New field -->
+        <button  type="submit">Download</button>
+        
+    </form>
+
+    <script src="app.js"></script>
+</body>
+</html>
